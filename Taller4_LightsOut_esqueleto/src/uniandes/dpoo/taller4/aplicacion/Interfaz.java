@@ -17,7 +17,9 @@ class Interfaz extends JFrame implements ActionListener {
     private JLabel nombreLabel = this.crearLabel("");
     private JLabel edadLabel = this.crearLabel("");
     private JLabel emailLabel = this.crearLabel("");
-
+    private int dificultad = 3;
+    private int cantidad_celdas = 5;
+    private Tablero2D tableroDelJuego=new Tablero2D(cantidad_celdas,dificultad);
 
     private Color azulPrincipal = new Color(43, 136, 224);
 
@@ -28,11 +30,10 @@ class Interfaz extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         container = getContentPane();
         container.setLayout(new BorderLayout());
-        JPanel botonesOpciones= new PanelOpciones(azulPrincipal, Color.WHITE);
-        JPanel tableroDelJuego = new Tablero2D(7);
-        JPanel botonesConfiguracion=  new PanelConfiguracion(azulPrincipal);
+        JPanel botonesOpciones= new PanelOpciones(azulPrincipal, Color.WHITE,this);
+        JPanel botonesConfiguracion=  new PanelConfiguracion(azulPrincipal, this);
         JPanel PanelInformacion = new PanelInformacion();
-        container.add(tableroDelJuego,BorderLayout.CENTER);
+        crearNuevoTablero();
         container.add(botonesOpciones,BorderLayout.EAST);
         container.add(botonesConfiguracion,BorderLayout.NORTH);
         container.add(PanelInformacion,BorderLayout.SOUTH);
@@ -40,9 +41,31 @@ class Interfaz extends JFrame implements ActionListener {
         setResizable(false);
     }
 
+    public void setDificultad(int dificultad){
+        this.dificultad=dificultad;
+    }
+
+    public void setTamaño(int tamaño){
+        this.cantidad_celdas=tamaño;
+    }
 
 
+    public void crearNuevoTablero(){
+        container.remove(tableroDelJuego);
+        tableroDelJuego=new Tablero2D(cantidad_celdas,dificultad);
+        container.add(tableroDelJuego,BorderLayout.CENTER);
+        container.revalidate();
+        container.repaint();
+        
 
+    }
+
+    public void reiniciarTablero(){
+        
+        tableroDelJuego.getTablero().reiniciar();
+        container.revalidate();
+        container.repaint();
+    }
 
 
 

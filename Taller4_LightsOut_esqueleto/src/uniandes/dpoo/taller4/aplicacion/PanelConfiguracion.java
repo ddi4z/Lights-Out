@@ -5,16 +5,18 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
 
-
 import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 
+
+
 public class PanelConfiguracion extends JPanel {
 
-    public PanelConfiguracion(Color color){
+
+    public PanelConfiguracion(Color color, Interfaz interfaz){
         setLayout(new FlowLayout());
         setBackground(color);
         setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -35,6 +37,27 @@ public class PanelConfiguracion extends JPanel {
         JRadioButton radioButton1 = CustomWidget.nuevoBotonRadio("Fácil",color,Color.white);
         JRadioButton radioButton2 = CustomWidget.nuevoBotonRadio("Medio",color,Color.white);
         JRadioButton radioButton3 = CustomWidget.nuevoBotonRadio("Difícil",color,Color.white);
+        
+        opcionesTamaño.addActionListener(e -> {
+            String tamaño = (String) opcionesTamaño.getSelectedItem();
+            if (tamaño.equals("3x3"))interfaz.setTamaño(3);
+            else if (tamaño.equals("5x5"))interfaz.setTamaño(5);
+            else interfaz.setTamaño(7);
+
+            
+            // Realizar otras acciones necesarias con el valor seleccionado
+        });
+
+
+        radioButton1.addActionListener(e -> {
+            interfaz.setDificultad(3);
+        });
+        radioButton2.addActionListener(e -> {
+            interfaz.setDificultad(5);
+        });
+        radioButton3.addActionListener(e -> {
+            interfaz.setDificultad(7);
+        });
     
         radioButton1.setSelected(true);
         group.add(radioButton1);
@@ -44,10 +67,15 @@ public class PanelConfiguracion extends JPanel {
         add(radioButton2);
         add(radioButton3);
 
+
     }
 
 
+
+
+
 }
+
 
 
 
