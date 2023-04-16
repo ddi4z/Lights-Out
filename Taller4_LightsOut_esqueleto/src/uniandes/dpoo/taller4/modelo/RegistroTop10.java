@@ -7,7 +7,7 @@ public class RegistroTop10
 	// ********************************
 
 	/**
-	 * El nombre asociado al registro: sólo debe tener 3 caracteres y no debe
+	 * El nombre asociado al registro: sï¿½lo debe tener 3 caracteres y no debe
 	 * incluir el caracter ';'
 	 */
 	private String nombre;
@@ -25,12 +25,12 @@ public class RegistroTop10
 	 * Crea un nuevo registro y modifica el nombre para que cumpla con las
 	 * siguientes reglas:
 	 * 
-	 * - Debe tener sólo tres caracteres
+	 * - Debe tener sï¿½lo tres caracteres
 	 * 
 	 * - No puede incluir el caracter ';'
 	 * 
-	 * - Las letras deben estar en mayúsculas
-	 * 
+	 * - Las letras deben estar en mayï¿½sculas
+	 *
 	 * @param nombre El nombre para el registro
 	 * @param puntos La cantidad de puntos
 	 */
@@ -44,12 +44,12 @@ public class RegistroTop10
 	}
 
 	// ********************************
-	// Métodos
+	// Mï¿½todos
 	// ********************************
 
 	/**
 	 * Retorna la cantidad de puntos
-	 * 
+	 *
 	 * @return puntos
 	 */
 	public int darPuntos()
@@ -59,7 +59,7 @@ public class RegistroTop10
 
 	/**
 	 * Retorna el nombre
-	 * 
+	 *
 	 * @return nombre
 	 */
 	public String darNombre()
