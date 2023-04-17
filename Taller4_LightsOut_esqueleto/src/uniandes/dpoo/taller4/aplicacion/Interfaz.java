@@ -19,9 +19,10 @@ class Interfaz extends JFrame implements ActionListener {
     private JLabel emailLabel = this.crearLabel("");
     private int dificultad = 3;
     private int cantidad_celdas = 5;
-    private Tablero2D tableroDelJuego=new Tablero2D(cantidad_celdas,dificultad);
-
+    private Tablero2D tableroDelJuego=new Tablero2D(cantidad_celdas,dificultad,this);
+    private PanelInformacion PanelInformacion = new PanelInformacion();
     private Color azulPrincipal = new Color(43, 136, 224);
+    private String nombre;
 
 
     public Interfaz() {
@@ -30,9 +31,8 @@ class Interfaz extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         container = getContentPane();
         container.setLayout(new BorderLayout());
-        JPanel botonesOpciones= new PanelOpciones(azulPrincipal, Color.WHITE,this);
-        JPanel botonesConfiguracion=  new PanelConfiguracion(azulPrincipal, this);
-        JPanel PanelInformacion = new PanelInformacion();
+        PanelOpciones botonesOpciones= new PanelOpciones(azulPrincipal, Color.WHITE,this);
+        PanelConfiguracion botonesConfiguracion=  new PanelConfiguracion(azulPrincipal, this);
         crearNuevoTablero();
         container.add(botonesOpciones,BorderLayout.EAST);
         container.add(botonesConfiguracion,BorderLayout.NORTH);
@@ -52,7 +52,7 @@ class Interfaz extends JFrame implements ActionListener {
 
     public void crearNuevoTablero(){
         container.remove(tableroDelJuego);
-        tableroDelJuego=new Tablero2D(cantidad_celdas,dificultad);
+        tableroDelJuego=new Tablero2D(cantidad_celdas,dificultad,this);
         container.add(tableroDelJuego,BorderLayout.CENTER);
         container.revalidate();
         container.repaint();
@@ -60,11 +60,20 @@ class Interfaz extends JFrame implements ActionListener {
 
     }
 
+    public PanelInformacion getInfo(){
+        return this.PanelInformacion;
+    }
+
+
     public void reiniciarTablero(){
         
         tableroDelJuego.getTablero().reiniciar();
         container.revalidate();
         container.repaint();
+    }
+
+    public void setNombre(){
+        this.nombre = PanelInformacion.getNombreField();
     }
 
 

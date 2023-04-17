@@ -20,9 +20,11 @@ public class Tablero2D extends JPanel implements MouseListener {
    private int gap;
    private Rectangle[][] rectangles;
    private Tablero tablero;
+   private Interfaz interfaz;
  
-   public Tablero2D(int cantidad_celdas, int dificultad) {
+   public Tablero2D(int cantidad_celdas, int dificultad, Interfaz interfaz) {
       setConf(cantidad_celdas,dificultad);
+      this.interfaz=interfaz;
       addMouseListener(this);
    }
 
@@ -71,10 +73,15 @@ public class Tablero2D extends JPanel implements MouseListener {
       int y = e.getY();
       for (int i=0; i<cantidad_celdas; i++){
       for (int j=0; j<cantidad_celdas; j++) {
-         if (rectangles[i][j].contains(x, y)) {
+         if (rectangles[i][j].contains(x, y) && (!tablero.tableroIluminado())) {
             tablero.jugar(i,j);
+            interfaz.getInfo().setCantidad(tablero.darJugadas());
             repaint();
+            if (tablero.tableroIluminado()){
+               JOptionPane.showMessageDialog(this, new JLabel("Has completado el tablero con "+ tablero.calcularPuntaje() +" puntos."), "Ganaste", JOptionPane.INFORMATION_MESSAGE);
+            }
          }
+
       }
    }
    }

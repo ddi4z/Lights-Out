@@ -21,15 +21,17 @@ public class PanelOpciones extends JPanel {
     
         boton1.addActionListener(e -> {
             interfaz.crearNuevoTablero();
+            interfaz.getInfo().setCantidad(0);
         });
         boton2.addActionListener(e -> {
             interfaz.reiniciarTablero();
+            interfaz.getInfo().setCantidad(0);
         });
         boton3.addActionListener(e -> {
             
         });
         boton4.addActionListener(e -> {
-            
+            interfaz.setNombre();
         });
         add(Box.createVerticalGlue());
         add(Box.createVerticalGlue());
