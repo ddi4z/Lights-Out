@@ -18,7 +18,7 @@ public class PanelOpciones extends JPanel {
         JButton boton2 = new JButton("REINICIAR");
         JButton boton3 = new JButton("TOP-10");
         JButton boton4 = new JButton("CAMBIAR JUGADOR");
-    
+
         boton1.addActionListener(e -> {
             interfaz.crearNuevoTablero();
             interfaz.getInfo().setCantidad(0);
@@ -28,7 +28,7 @@ public class PanelOpciones extends JPanel {
             interfaz.getInfo().setCantidad(0);
         });
         boton3.addActionListener(e -> {
-            
+            new InterfazTop(interfaz.getTop().darRegistros());
         });
         boton4.addActionListener(e -> {
             interfaz.setNombre();
@@ -37,17 +37,17 @@ public class PanelOpciones extends JPanel {
         add(Box.createVerticalGlue());
         add(Box.createVerticalGlue());
         add(Box.createVerticalGlue());
-    
+
         add(boton1);
         add(boton2);
         add(boton3);
         add(boton4);
-    
+
         add(Box.createVerticalGlue());
         add(Box.createVerticalGlue());
         add(Box.createVerticalGlue());
         add(Box.createVerticalGlue());
-    
+
         boton1.setBackground(colorPrincipal);
         boton1.setForeground(colorFont);
         boton2.setBackground(colorPrincipal);

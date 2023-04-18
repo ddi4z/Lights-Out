@@ -1,11 +1,8 @@
 package uniandes.dpoo.taller4.aplicacion;
-
 import java.awt.Color;
 import java.awt.Font;
-
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
-
 public class CustomWidget {
     private static Font fuentePrincipal = new Font("Arial", Font.PLAIN , 14);
     private static Font fuentePrincipalNegrilla = new Font("Arial", Font.BOLD , 14);

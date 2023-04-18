@@ -4,12 +4,15 @@ package uniandes.dpoo.taller4.aplicacion;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import uniandes.dpoo.taller4.modelo.Tablero;
+import uniandes.dpoo.taller4.modelo.Top10;
 
 public class Tablero2D extends JPanel implements MouseListener {
 
@@ -21,13 +24,12 @@ public class Tablero2D extends JPanel implements MouseListener {
    private Rectangle[][] rectangles;
    private Tablero tablero;
    private Interfaz interfaz;
- 
+
    public Tablero2D(int cantidad_celdas, int dificultad, Interfaz interfaz) {
       setConf(cantidad_celdas,dificultad);
       this.interfaz=interfaz;
       addMouseListener(this);
    }
-
 
    public void setConf(int cantidad_celdas,int dificultad ){
       this.cantidad_celdas = cantidad_celdas;
@@ -42,8 +44,6 @@ public class Tablero2D extends JPanel implements MouseListener {
    public Tablero getTablero(){
       return tablero;
    }
-
-
 
    public void paintComponent(Graphics g) {
       super.paintComponent(g);
@@ -79,6 +79,20 @@ public class Tablero2D extends JPanel implements MouseListener {
             repaint();
             if (tablero.tableroIluminado()){
                JOptionPane.showMessageDialog(this, new JLabel("Has completado el tablero con "+ tablero.calcularPuntaje() +" puntos."), "Ganaste", JOptionPane.INFORMATION_MESSAGE);
+               Top10 top10 = interfaz.getTop();
+               if (top10.esTop10(tablero.calcularPuntaje())){
+
+                  top10.agregarRegistro(interfaz.getNombre(),tablero.calcularPuntaje());
+                  try {
+                     top10.salvarRecords(new File("Taller4_LightsOut_esqueleto/data/top10.csv"));
+                  } catch (FileNotFoundException e1) {
+
+                     e1.printStackTrace();
+                  } catch (UnsupportedEncodingException e1) {
+
+                     e1.printStackTrace();
+                  }
+               }
             }
          }
 
