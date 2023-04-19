@@ -8,7 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class PanelOpciones extends JPanel {
+    private Interfaz interfaz;
     public PanelOpciones(Color colorPrincipal, Color colorFont, Interfaz interfaz){
+        this.interfaz= interfaz;
         GridLayout gridLayout = new GridLayout(0, 1);
         gridLayout.setVgap(20);
         setLayout(gridLayout);
@@ -20,18 +22,18 @@ public class PanelOpciones extends JPanel {
         JButton boton4 = new JButton("CAMBIAR JUGADOR");
 
         boton1.addActionListener(e -> {
-            interfaz.crearNuevoTablero();
-            interfaz.getInfo().setCantidad(0);
+            this.interfaz.crearNuevoTablero();
+            this.interfaz.getInfo().setCantidad(0);
         });
         boton2.addActionListener(e -> {
-            interfaz.reiniciarTablero();
-            interfaz.getInfo().setCantidad(0);
+            this.interfaz.reiniciarTablero();
+            this.interfaz.getInfo().setCantidad(0);
         });
         boton3.addActionListener(e -> {
             new InterfazTop(interfaz.getTop().darRegistros());
         });
         boton4.addActionListener(e -> {
-            interfaz.setNombre();
+            this.interfaz.setNombre();
         });
         add(Box.createVerticalGlue());
         add(Box.createVerticalGlue());

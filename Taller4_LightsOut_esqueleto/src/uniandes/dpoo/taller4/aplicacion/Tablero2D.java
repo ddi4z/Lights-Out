@@ -57,7 +57,7 @@ public class Tablero2D extends JPanel implements MouseListener {
             for (int j=0; j<cantidad_celdas; j++){
                rectangles[i][j]= new Rectangle(margen+(gap*j)+(j*tamaño_celda), margen+(gap*i)+(i*tamaño_celda),tamaño_celda, tamaño_celda);
                if (tablero.darTablero()[i][j]) g2.setColor(color);
-               else g2.setColor(Color.black);
+               else g2.setColor(new Color(50,50,50));
                g2.fill(rectangles[i][j]);
                g2.drawImage(image, margen+mitadDisminucion+(gap*j)+(j*tamaño_celda), margen+mitadDisminucion+(gap*i)+(i*tamaño_celda),tamaño_celda-disminucionTamañoImagen, tamaño_celda-disminucionTamañoImagen, null);
             }

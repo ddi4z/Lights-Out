@@ -8,7 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 public class PanelConfiguracion extends JPanel {
+    private Interfaz interfaz;
     public PanelConfiguracion(Color color, Interfaz interfaz){
+        this.interfaz=interfaz;
         setLayout(new FlowLayout());
         setBackground(color);
         setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -36,13 +38,13 @@ public class PanelConfiguracion extends JPanel {
         });
 
         radioButton1.addActionListener(e -> {
-            interfaz.setDificultad(3);
+            this.interfaz.setDificultad(3);
         });
         radioButton2.addActionListener(e -> {
-            interfaz.setDificultad(5);
+            this.interfaz.setDificultad(5);
         });
         radioButton3.addActionListener(e -> {
-            interfaz.setDificultad(7);
+            this.interfaz.setDificultad(7);
         });
 
         radioButton1.setSelected(true);
