@@ -1,5 +1,5 @@
 # Taller-4-DPOO
-You can read the English version [here](https://github.com/ddi4z/Lights-Out/blob/main/ENGLISH.MD).
+You can read the English version [here](https://github.com/ddi4z/Lights-Out/blob/main/ENGLISH.md)
 
 Este taller fue desarrollado como parte del curso de Diseño y Programación Orientado a Objetos en la Universidad de Los Andes durante el primer semestre del 2023, utilizando Java y el framework Swing.
 
